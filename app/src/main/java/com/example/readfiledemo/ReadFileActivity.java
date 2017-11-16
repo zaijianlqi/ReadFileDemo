@@ -28,7 +28,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements OnItemClickListener {
+public class ReadFileActivity extends Activity implements OnItemClickListener {
 
     private ListView mListView;
     private TextView mPathView;
@@ -41,12 +41,12 @@ public class MainActivity extends Activity implements OnItemClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.file_manager);
         List<String> permissionList=new ArrayList<>();
-        if(ContextCompat.checkSelfPermission(MainActivity.this,
+        if(ContextCompat.checkSelfPermission(ReadFileActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)
             permissionList.add(Manifest.permission.READ_EXTERNAL_STORAGE);
         if(!permissionList.isEmpty()){
             String[] permissions=permissionList.toArray(new String[permissionList.size()]);
-            ActivityCompat.requestPermissions(MainActivity.this,permissions,1);
+            ActivityCompat.requestPermissions(ReadFileActivity.this,permissions,1);
         }else{
             initView();
         }
@@ -183,8 +183,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
         } else {
             Toast.makeText(this,file.getName(),Toast.LENGTH_SHORT).show();
         }
-           // openFile(file);
-        }
+        // openFile(file);
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,String[] permissions,int[] grantResults)
@@ -210,7 +210,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
             default:
         }
     }
-    }
+}
+
 
 
 
